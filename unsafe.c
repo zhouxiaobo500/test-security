@@ -3,7 +3,7 @@
 
 // 这是一个极其经典的漏洞场景
 void vulnerable_function(char *input) {
-    // 定义了一个只有 10 字节的缓冲区
+    // 定义了一个只有 10 字节的缓冲区 c
     char buffer[10];
 
     // 危险！strcpy 不会检查输入长度
