@@ -34,7 +34,7 @@ jobs:
     # CodeQL 需要监控编译过程来建立数据库
     - name: Build C Code
       run: |
-        gcc unsafe_demo.c -o unsafe_demo
+        gcc unsafe.c -o unsafe_demo
 
     # 执行分析
     - name: Perform CodeQL Analysis
