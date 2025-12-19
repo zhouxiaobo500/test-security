@@ -1,0 +1,41 @@
+name: "CodeQL"
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'cpp' ] # C 和 C++ 都归在 'cpp' 类里
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # 初始化 CodeQL
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2
+      with:
+        languages: ${{ matrix.language }}
+
+    # 【关键步骤】手动编译你的 C 代码
+    # CodeQL 需要监控编译过程来建立数据库
+    - name: Build C Code
+      run: |
+        gcc unsafe_demo.c -o unsafe_demo
+
+    # 执行分析
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2
