@@ -1,0 +1,11 @@
+{
+  "name": "vuln-test-project",
+  "version-string": "1.0.0",
+  "dependencies": [
+    {
+      "name": "zlib",
+      "version>=": "1.2.8" 
+    }
+  ],
+  "builtin-baseline": "30124253eecff36bc90f73e3e081ed71d5b488dc" 
+}
